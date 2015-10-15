@@ -1,0 +1,17 @@
+SELECT TO_CHAR (TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS') TIMESTAMP,
+       ID,
+       LPAD (' ', DEPTH)
+       || OPERATION
+       || ' '
+       || OPTIONS
+       || DECODE (OBJECT_NAME, NULL, NULL, ' (' || OBJECT_NAME || ')')
+       ACTION,
+       COST,
+       CARDINALITY,
+       CPU_COST,
+       IO_COST,
+       PLAN_HASH_VALUE,OPTIMIZER,BYTES,TIME
+    FROM DBA_HIST_SQL_PLAN
+   WHERE SQL_ID = '&sqlid'
+ORDER BY   1 DESC, 2
+/

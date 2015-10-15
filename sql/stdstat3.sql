@@ -1,0 +1,2 @@
+select CLIENT_PROCESS,PROCESS,SEQUENCE#,STATUS,BLOCKS,BLOCK# from v$managed_standby 
+/
